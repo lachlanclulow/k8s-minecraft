@@ -5,12 +5,14 @@ echo "Running entrypoint script."
 echo "Downloading classic server"
 #wget -q https://launcher.mojang.com/mc/game/$VERSION/server/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar -P /home/minecraft/
 
-wget -q http://s3.amazonaws.com/MinecraftDownload/minecraft_classic_server.zip -P /home/minecraft-zip/
+wget -q http://s3.amazonaws.com/MinecraftDownload/minecraft_classic_server.zip -P /home/minecraft/
+
+ls /home/minecraft
 
 echo "Unzipping classic server"
-unzip /home/minecraft-zip/minecraft_classic_server.zip
+unzip /home/minecraft/minecraft_classic_server.zip -d /home/minecraft/
 
-cp /home/minecraft-zip/minecraft_classic_server/minecraft-server.jar /home/minecraft/server.jar
+mv /home/minecraft/minecraft-server.jar /home/minecraft/server.jar
 
 #echo "Accepting eula..."
 #echo "# Generated via Docker on $(date)" > /minecraft-data/eula.txt
@@ -20,4 +22,4 @@ cp /home/minecraft-zip/minecraft_classic_server/minecraft-server.jar /home/minec
 #  exit 2
 #fi
 
-#exec "$@"
+exec "$@"

@@ -21,4 +21,5 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 USER minecraft
 
 WORKDIR /minecraft-data
-CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "/home/minecraft/server.jar", "nogui"]
+#CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "/home/minecraft/server.jar", "nogui"]
+CMD ["java", "-cp", "/home/minecraft/server.jar", "com.mojang.minecraft.server.MinecraftServer"]
